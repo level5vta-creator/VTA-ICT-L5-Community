@@ -1,0 +1,367 @@
+/* ===== LESSON PAGE SPECIFIC STYLES ===== */
+/* Inherits variables and base from style.css */
+
+.lesson-main {
+    padding-bottom: 3rem;
+}
+
+/* ----- Hero Section ----- */
+.lesson-hero {
+    text-align: center;
+    padding: 3rem 0 2rem;
+}
+
+.lesson-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f0f4f8 0%, #c0c8d2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Search bar */
+.search-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 3rem;
+    font-size: 1.1rem;
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 60px;
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(155, 28, 49, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ----- Top Contributors Card ----- */
+.contributors-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contributors-card {
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contributors-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contributors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.contributor-row {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.contributor-row:last-child {
+    border-bottom: none;
+}
+
+.rank {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    min-width: 2.2rem;
+}
+
+.name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.count {
+    background: rgba(155, 28, 49, 0.15);
+    padding: 0.25rem 0.9rem;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border: 1px solid rgba(155, 28, 49, 0.3);
+}
+
+/* ----- Filter Pills ----- */
+.filters-section {
+    margin: 2rem auto;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.filter-pills {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pill {
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 1.3rem;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.pill:hover {
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 12px rgba(155, 28, 49, 0.3);
+    transform: translateY(-1px);
+}
+
+.pill.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(155, 28, 49, 0.4);
+}
+
+/* ----- Notes Grid ----- */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 1.5rem;
+}
+
+/* Note card — dark glass redesign */
+.note-card {
+    background: rgba(15, 15, 20, 0.85);
+    border: 1px solid rgba(220, 38, 38, 0.35);
+    border-radius: 18px;
+    padding: 1.4rem 1.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.06),
+        0 4px 24px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.38),
+        0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* Row 1 — file icon + title */
+.note-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.note-file-icon {
+    font-size: 1.65rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.note-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #f1f1f1;
+    margin: 0;
+    line-height: 1.35;
+}
+
+/* Row 2 — subject pill */
+.note-subject {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    border: 1px solid rgba(220, 38, 38, 0.5);
+    border-radius: 999px;
+    background: rgba(220, 38, 38, 0.08);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #f87171;
+    letter-spacing: 0.03em;
+    align-self: flex-start;
+}
+
+/* Row 3 — meta (uploader + date) */
+.note-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    font-size: 0.84rem;
+    color: rgba(180, 180, 200, 0.75);
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.note-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Row 4 — action buttons */
+.note-footer {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 0.4rem;
+}
+
+.download-btn {
+    padding: 0.42rem 1.05rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: box-shadow 0.18s ease, background 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.6);
+    color: #f87171;
+}
+
+.download-btn:hover {
+    background: rgba(220, 38, 38, 0.22);
+    box-shadow: 0 0 14px rgba(220, 38, 38, 0.35);
+}
+
+.preview-btn {
+    padding: 0.42rem 1.05rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: box-shadow 0.18s ease, background 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #d1d5db;
+}
+
+.preview-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.07);
+}
+
+/* Empty state */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--card-color);
+    border-radius: 32px;
+    border: 1px dashed var(--border-color);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.empty-state span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.loading-indicator {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 992px) {
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lesson-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .contributors-card {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-pills {
+        justify-content: flex-start;
+    }
+
+    .pill {
+        white-space: nowrap;
+    }
+
+    .filters-section {
+        overflow-x: auto;
+    }
+}
