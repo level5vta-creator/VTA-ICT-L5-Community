@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Notes – VTA ICT L5 Community</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    /* Consistent form styling – matches themed inputs */
+    .form-section {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+    }
+    .form-section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .form-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+    .form-group label .required {
+      color: var(--primary-color);
+      margin-left: 2px;
+    }
+    select,
+    input[type="file"] {
+      background-color: var(--card-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 100%;
+      font-family: inherit;
+    }
+    select:focus,
+    input[type="file"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    input[type="file"]::file-selector-button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.4rem 1rem;
+      margin-right: 1rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    input[type="file"]::file-selector-button:hover {
+      background-color: var(--hover-color);
+    }
+    .submit-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar (identical to index.html) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lesson.html">Lessons</a></li>
+          <li><a href="posts.html">Community</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Add Notes</h1>
+        <p>Submit your lesson notes under the correct subject and topic. All uploads require admin approval.</p>
+      </div>
+    </section>
+
+    <!-- Upload Form Section -->
+    <section class="section">
+      <div class="container" style="max-width: 700px;">
+        <div class="card">
+          <form id="uploadForm">
+            <!-- Section 1: Lesson Category -->
+            <div class="form-section">
+              <h3>📚 Lesson Category</h3>
+              <div class="form-group">
+                <label for="subject">Select Subject <span class="required">*</span></label>
+                <select id="subject" name="subject" required>
+                  <option value="" disabled selected>-- Choose a subject --</option>
+                  <option value="Programming">Programming</option>
+                  <option value="Database Systems">Database Systems</option>
+                  <option value="Networking (LAN)">Networking (LAN)</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="System Analysis & Design">System Analysis & Design</option>
+                  <option value="Software Testing">Software Testing</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="Workplace Communication">Workplace Communication</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Section 2: Topic Details -->
+            <div class="form-section">
+              <h3>📌 Topic Details</h3>
+              <div class="form-group">
+                <label for="topic">Topic Name <span class="required">*</span></label>
+                <input type="text" id="topic" name="topic" placeholder="e.g. Java OOP Concepts, OSI Model Layers, ER Diagram Design" required>
+              </div>
+            </div>
+
+            <!-- Section 3: Note Information -->
+            <div class="form-section">
+              <h3>📄 Note Information</h3>
+              <div class="form-group">
+                <label for="title">Title <span class="required">*</span></label>
+                <input type="text" id="title" name="title" placeholder="e.g. Complete Java OOP Notes" required>
+              </div>
+              <div class="form-group">
+                <label for="uploader">Your Name <span class="required">*</span></label>
+                <input type="text" id="uploader" name="uploader" placeholder="e.g. Eshan Janidu" required>
+              </div>
+            </div>
+
+            <!-- Section 4: File Type -->
+            <div class="form-section">
+              <h3>🔧 File Type</h3>
+              <div class="form-group">
+                <label for="file-type">File Type <span class="required">*</span></label>
+                <select id="file-type" name="file-type" required>
+                  <option value="" disabled selected>-- Select file type --</option>
+                  <option value="pdf">PDF</option>
+                  <option value="images">Images (Will convert to PDF)</option>
+                  <option value="code">Code File</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Section 5: Upload File -->
+            <div class="form-section">
+              <h3>📎 Upload File</h3>
+              <div class="form-group">
+                <label for="file-upload">Choose file <span class="required">*</span></label>
+                  <input type="file" id="file-upload" name="file-upload" multiple accept="image/*,application/pdf,.js,.java,.cpp" required>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="text-align: center;">
+              <button type="submit" class="btn btn-primary">Submit for Admin Review</button>
+              <div class="submit-note">Upload date will be recorded automatically.</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+      <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+    </div>
+  </footer>
+
+
+  <!-- Upload Overlay -->
+  <div id="uploadOverlay" class="upload-overlay" style="display:none;">
+    <div class="upload-overlay-content">
+      <div class="upload-title">Uploading file...</div>
+      <div class="progress-bar-bg">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div id="progressPercent" class="progress-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- Success Popup -->
+  <div id="successPopup" class="success-card" style="display:none;">
+    <div class="success-card-content">
+      <div class="success-card-icon">
+        <!-- Modern check icon SVG, red accent -->
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="12" fill="#b91c1c"/>
+          <path d="M7 13.5l3 3 6-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Upload Successful</h3>
+      <p>Your note was submitted.<br>Admin will review and approve it within 24 hours.</p>
+      <button id="closeSuccessBtn" class="success-btn">Got it</button>
+    </div>
+  </div>
+
+  <script src="assets/js/ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="assets/js/upload.js"></script>
+</body>
+</html>

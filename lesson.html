@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons · VTA ICT L5 Community</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/lesson.css">
+</head>
+
+<body>
+    <!-- Navbar (identical to index.html, with active lesson link) -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">VTA ICT L5 Community</div>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lesson.html" class="active">Lessons</a></li>
+                    <li><a href="posts.html">Community</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="upload.html" class="btn btn-outline">Add Notes</a>
+                    <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="lesson-main">
+        <!-- Hero + search -->
+        <section class="lesson-hero">
+            <div class="container">
+                <h1>Lessons & Community Notes</h1>
+                <p class="hero-subtitle">Browse notes shared by the community</p>
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" class="search-input"
+                        placeholder="Search by title, subject, or uploader...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subtle admin access link -->
+        <a href="admin-login.html" class="admin-access">🛡 Moderation</a>
+
+        <!-- Top contributors card (dynamic) -->
+        <section class="container contributors-section">
+            <div class="contributors-card">
+                <h2 class="contributors-title">🏆 Top Contributors This Month</h2>
+                <div id="topContributorsList" class="contributors-list">
+                    <!-- filled by JS -->
+                    <div class="contributor-row"><span class="rank">🥇</span> <span class="name">Loading</span> <span
+                            class="count">? uploads</span></div>
+                    <div class="contributor-row"><span class="rank">🥈</span> <span class="name">Loading</span> <span
+                            class="count">? uploads</span></div>
+                    <div class="contributor-row"><span class="rank">🥉</span> <span class="name">Loading</span> <span
+                            class="count">? uploads</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subject filter pills -->
+        <section class="container filters-section">
+            <div class="filter-pills" id="filterPills">
+                <button class="pill active" data-subject="all">All</button>
+                <button class="pill" data-subject="Programming">Programming</button>
+                <button class="pill" data-subject="Database Systems">Database Systems</button>
+                <button class="pill" data-subject="Networking">Networking</button>
+                <button class="pill" data-subject="Web Development">Web Development</button>
+                <button class="pill" data-subject="Software Testing">Software Testing</button>
+                <button class="pill" data-subject="Graphic Design">Graphic Design</button>
+                <button class="pill" data-subject="System Analysis">System Analysis</button>
+                <button class="pill" data-subject="Information Management">Information Management</button>
+            </div>
+        </section>
+
+        <!-- Notes grid -->
+        <section class="container notes-section">
+            <div id="notesGrid" class="notes-grid">
+                <!-- dynamic cards will appear here -->
+                <div class="loading-indicator">Loading notes...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index) -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+            <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Supabase library (required for supabaseClient) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Our local supabase config + client -->
+    <script src="assets/js/supabase.js"></script>
+    <!-- UI helpers (theme toggle, mobile menu) – reuses existing code -->
+    <script src="assets/js/ui.js"></script>
+    <!-- Page specific logic: fetch notes, render, filter -->
+    <script src="assets/js/lesson.js"></script>
+</body>
+
+</html>

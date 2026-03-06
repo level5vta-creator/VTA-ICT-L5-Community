@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VTA ICT L5 Community · AI Assistant</title>
+  <!-- Core styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <!-- Chat specific styles -->
+  <link rel="stylesheet" href="assets/css/ai.css">
+  <!-- Font Awesome for send icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar (exact copy from index.html) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lesson.html">Lessons</a></li>
+          <li><a href="posts.html">Community</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main chat area -->
+  <main class="chat-page">
+    <div class="chat-container">
+      <!-- Messages area (scrolls) -->
+      <div class="chat-messages" id="chatMessages">
+        <!-- Initial AI message will be inserted by JS -->
+      </div>
+
+      <!-- Quick actions + input (fixed at bottom) -->
+      <div class="chat-input-area">
+        <!-- Quick action buttons -->
+        <div class="quick-actions">
+          <button class="quick-btn" data-prompt="explain"><i class="fas fa-code"></i> Explain code</button>
+          <button class="quick-btn" data-prompt="fix"><i class="fas fa-wrench"></i> Fix programming error</button>
+          <button class="quick-btn" data-prompt="summarize"><i class="fas fa-file-lines"></i> Summarize notes</button>
+          <button class="quick-btn" data-prompt="roadmap"><i class="fas fa-map"></i> Learning roadmap</button>
+        </div>
+
+        <!-- Input form -->
+        <div class="input-wrapper">
+          <input type="text" id="messageInput" placeholder="Ask me anything about ICT..." autofocus>
+          <button class="send-btn" id="sendButton" aria-label="Send message">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/ai.js"></script>
+</body>
+</html>

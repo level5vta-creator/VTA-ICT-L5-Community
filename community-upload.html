@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share with Community · VTA ICT L5</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    /* Additional fine-tuning for this page */
+    .upload-hero {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+    .upload-hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    .upload-hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+    .form-card {
+      background: rgba(15, 15, 20, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(155, 28, 49, 0.3);
+      border-radius: 24px;
+      padding: 2rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(155, 28, 49, 0.2);
+      transition: box-shadow 0.3s ease, border-color 0.3s;
+    }
+    .form-card:hover {
+      border-color: var(--primary-color);
+      box-shadow: 0 18px 36px rgba(155, 28, 49, 0.3);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #ddd;
+      font-size: 1rem;
+    }
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group input[type="file"] {
+      width: 100%;
+      background: #1e1e2a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 0.85rem 1.2rem;
+      color: #fff;
+      font-size: 1rem;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus,
+    .form-group input[type="file"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(155, 28, 49, 0.3);
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .file-hint {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 0.4rem;
+    }
+    .submit-btn {
+      background: linear-gradient(135deg, #9B1C31, #b22b40);
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      width: 100%;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      box-shadow: 0 6px 18px rgba(155, 28, 49, 0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(155, 28, 49, 0.7);
+      filter: brightness(1.1);
+    }
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      filter: grayscale(0.3);
+    }
+    .success-message {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid #22c55e;
+      color: #4ade80;
+      padding: 1rem;
+      border-radius: 16px;
+      text-align: center;
+      margin: 1rem 0 2rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+    .error-message {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      color: #f87171;
+      padding: 1rem;
+      border-radius: 16px;
+      text-align: center;
+      margin: 1rem 0 2rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+    .container-narrow {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar (exactly as index.html) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lesson.html">Lessons</a></li>
+          <li><a href="posts.html">Community</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container-narrow">
+      <!-- Hero heading -->
+      <div class="upload-hero">
+        <h1>Share with the Community</h1>
+        <p>Your post will be visible after admin approval.</p>
+      </div>
+
+      <!-- Glass form card -->
+      <div class="form-card">
+        <form id="postForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="author">Your name</label>
+            <input type="text" id="author" name="author" placeholder="e.g., Eshan J." required>
+          </div>
+
+          <div class="form-group">
+            <label for="caption">Caption</label>
+            <textarea id="caption" name="caption" placeholder="What would you like to share?" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="imageFile">Upload image</label>
+            <input type="file" id="imageFile" name="imageFile" accept=".jpg,.jpeg,.png,.gif,.webp" required>
+            <div class="file-hint">Allowed: JPG, PNG, GIF, WEBP (max 5MB)</div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Submit for Approval</button>
+        </form>
+
+        <!-- Status messages will appear here -->
+        <div id="statusMessage"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (same as index) -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+      <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/ui.js"></script>
+
+  <script>
+    (function() {
+      const form = document.getElementById('postForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const statusDiv = document.getElementById('statusMessage');
+      const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+      const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Clear previous status
+        statusDiv.innerHTML = '';
+
+        // Get form values
+        const author = document.getElementById('author').value.trim();
+        const caption = document.getElementById('caption').value.trim();
+        const fileInput = document.getElementById('imageFile');
+        const file = fileInput.files[0];
+
+        // Basic validation
+        if (!author || !caption || !file) {
+          showStatus('All fields are required.', 'error');
+          return;
+        }
+
+        // Validate file type
+        if (!ALLOWED_TYPES.includes(file.type)) {
+          showStatus('Invalid file type. Allowed: JPG, PNG, GIF, WEBP.', 'error');
+          return;
+        }
+
+        // Validate file size
+        if (file.size > MAX_FILE_SIZE) {
+          showStatus('File size exceeds 5MB limit.', 'error');
+          return;
+        }
+
+        // Disable button, show loading
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        try {
+          // 1. Upload image to Supabase Storage (bucket: community-images)
+          const fileExt = file.name.split('.').pop();
+          const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
+          const filePath = `public/${fileName}`; // optional folder
+
+          const { data: uploadData, error: uploadError } = await window.supabaseClient
+            .storage
+            .from('community-images')
+            .upload(filePath, file, {
+              cacheControl: '3600',
+              upsert: false
+            });
+
+          if (uploadError) {
+            console.error('Upload error:', uploadError);
+            showStatus('Image upload failed. Please try again.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit for Approval';
+            return;
+          }
+
+          // 2. Get public URL of uploaded image
+          const { data: urlData } = window.supabaseClient
+            .storage
+            .from('community-images')
+            .getPublicUrl(filePath);
+
+          const imageUrl = urlData.publicUrl;
+
+          // 3. Insert post into 'posts' table with status = 'pending'
+          const { data: insertData, error: insertError } = await window.supabaseClient
+            .from('posts')
+            .insert([
+              {
+                author: author,
+                caption: caption,
+                image_url: imageUrl,
+                likes: 0,
+                status: 'pending'
+              }
+            ]);
+
+          if (insertError) {
+            console.error('Insert error:', insertError);
+            showStatus('Failed to create post. Please try again.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit for Approval';
+            return;
+          }
+
+          // 4. Success
+          showStatus('Post submitted successfully. Waiting for admin approval.', 'success');
+          form.reset(); // clear form
+
+        } catch (err) {
+          console.error('Unexpected error:', err);
+          showStatus('An unexpected error occurred. Please try again.', 'error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit for Approval';
+        }
+      });
+
+      function showStatus(message, type) {
+        statusDiv.innerHTML = `<div class="${type === 'success' ? 'success-message' : 'error-message'}">${message}</div>`;
+      }
+    })();
+  </script>
+</body>
+</html>

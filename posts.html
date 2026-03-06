@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Feed · VTA ICT L5</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <!-- Community page specific styles -->
+  <link rel="stylesheet" href="assets/css/community.css">
+</head>
+<body>
+  <!-- Navbar (exactly as index.html) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lesson.html">Lessons</a></li>
+          <li><a href="posts.html" style="color: var(--primary-color);">Community</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container feed-container">
+      <!-- Feed will be injected here by JavaScript -->
+      <div id="community-feed" class="community-feed">
+        <div class="loading-indicator">Loading posts...</div>
+      </div>
+    </div>
+
+    <!-- Floating create button → opens community-upload.html -->
+    <a href="community-upload.html" class="floating-create-btn" aria-label="Create new post">+</a>
+  </main>
+
+  <!-- Footer (same as index) -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+      <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/community.js"></script>
+</body>
+</html>

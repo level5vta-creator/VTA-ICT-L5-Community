@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · VTA ICT L5 Community</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    /* Active link highlight – matches primary color */
+    .nav-links a.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    /* Optional: subtle underline for active (like hover but persistent) */
+    .nav-links a.active::after {
+      transform: scaleX(1);
+      opacity: 0.9;
+    }
+    /* Step list styling (clean, uses card background) */
+    .step-list {
+      list-style: none;
+      padding: 0;
+    }
+    .step-list li {
+      background-color: var(--card-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .step-list li span.step-number {
+      background-color: var(--primary-color);
+      color: white;
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .light-theme .step-list li span.step-number {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar (identical structure, added About link) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lesson.html">Lessons</a></li>
+          <li><a href="posts.html">Community</a></li>
+          <li><a href="about.html" class="active" aria-current="page">About</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>About VTA ICT L5 Community</h1>
+        <p>A dedicated academic hub for ICT Level 5 students to share knowledge, collaborate on code, and grow together through structured peer learning.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: How the platform works (features grid) -->
+    <section class="section">
+      <div class="container">
+        <h2>How the platform works</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>📄 Upload PDF directly</h3>
+            <p>Share your lecture notes, handouts, and summaries in PDF format — instantly submitted for review.</p>
+          </div>
+          <div class="card">
+            <h3>🖼️ Upload Images → Auto convert to PDF</h3>
+            <p>Snap photos of whiteboards or handwritten notes; our system converts them into a clean PDF automatically.</p>
+          </div>
+          <div class="card">
+            <h3>✅ Admin approval system</h3>
+            <p>Every upload is checked by moderators to ensure quality and relevance before going public.</p>
+          </div>
+          <div class="card">
+            <h3>📚 Notes appear publicly after approval</h3>
+            <p>Approved materials become visible to all community members, searchable and organised by topic.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Code Practice Upload (single feature card, but we use full-width layout inside grid) -->
+    <section class="section">
+      <div class="container">
+        <h2>Code Practice Upload</h2>
+        <div class="grid" style="grid-template-columns: 1fr;"> <!-- single column -->
+          <div class="card">
+            <h3>💻 Share your code</h3>
+            <p>Students can upload one code file per submission (Java, Python, HTML/CSS, etc.). Files are reviewed by peers or mentors before being published to the community library. This ensures helpful, working examples and encourages clean coding habits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Community System -->
+    <section class="section">
+      <div class="container">
+        <h2>Community System</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>💬 Academic discussions</h3>
+            <p>Start or join conversations about assignments, projects, and ICT concepts. Keep it focused and helpful.</p>
+          </div>
+          <div class="card">
+            <h3>📎 Image / video limits</h3>
+            <p>To keep loading times fast and content relevant, images are limited to 5 MB and videos to 50 MB per post.</p>
+          </div>
+          <div class="card">
+            <h3>🎓 Purely academic focus</h3>
+            <p>This is a study‑first space — off‑topic content is gently redirected. Mentors and top contributors help maintain quality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: How Students Use This Platform (step by step) -->
+    <section class="section">
+      <div class="container">
+        <h2>How Students Use This Platform</h2>
+        <ul class="step-list">
+          <li><span class="step-number">1</span> <strong>Explore lessons</strong> – Browse topics like Programming, Databases, Networking, and more.</li>
+          <li><span class="step-number">2</span> <strong>Share your materials</strong> – Upload notes, images, or code through the "Add Notes" button.</li>
+          <li><span class="step-number">3</span> <strong>Wait for approval</strong> – Admins review your submission (usually within 24h).</li>
+          <li><span class="step-number">4</span> <strong>Engage with the community</strong> – Comment on posts, ask questions, and help peers.</li>
+          <li><span class="step-number">5</span> <strong>Build your knowledge</strong> – Use the growing resource library to prepare for exams and assignments.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (exactly as in index) -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+      <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · VTA ICT L5 Community</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <!-- Auth Guard: redirect to login if not authenticated -->
+  <script>
+    if (localStorage.getItem('adminLoggedIn') !== 'true') {
+      window.location.replace('admin-login.html');
+    }
+  </script>
+  <style>
+    /* Additional admin-specific styles */
+    .admin-title {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .btn-preview {
+      background: #2d3748;
+      color: white;
+      border: none;
+    }
+
+    .btn-preview:hover {
+      background: #4a5568;
+    }
+
+    .btn-approve {
+      background: #10b981;
+      color: white;
+      border: none;
+    }
+
+    .btn-approve:hover {
+      background: #059669;
+    }
+
+    .btn-delete {
+      background: #ef4444;
+      color: white;
+      border: none;
+    }
+
+    .btn-delete:hover {
+      background: #dc2626;
+    }
+
+    .note-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .note-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0.75rem 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .note-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .file-type-badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .file-type-badge.pdf {
+      background: #ef4444;
+      color: white;
+    }
+
+    .file-type-badge.code {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      background: var(--card-color);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+
+    .loading-indicator {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+    }
+
+    /* Community post card styles */
+    .post-image {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .post-caption {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar (identical to main site, with Admin link) -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#lessons">Lessons</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="admin.html" class="active">Admin</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="logout-btn" class="btn btn-outline" style="border-color:#ef4444;color:#ef4444;">Logout</button>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Notes Approvals Section -->
+    <section class="section">
+      <div class="container">
+        <h1 class="admin-title">📋 Pending Note Approvals</h1>
+        <div id="adminGrid" class="grid">
+          <!-- Cards will be injected by JavaScript -->
+          <div class="loading-indicator">Loading pending notes...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Posts Moderation Section -->
+    <section class="section">
+      <div class="container">
+        <hr class="section-divider">
+        <h2 class="admin-title">📸 Pending Community Posts</h2>
+        <div id="postsGrid" class="grid">
+          <div class="loading-indicator">Loading pending posts...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+      <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    document.getElementById('logout-btn').addEventListener('click', function () {
+      localStorage.removeItem('adminLoggedIn');
+      window.location.href = 'admin-login.html';
+    });
+  </script>
+</body>
+
+</html>

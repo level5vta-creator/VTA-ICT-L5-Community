@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VTA ICT L5 Community</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">VTA ICT L5 Community</div>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="lesson.html">Lessons</a></li>
+          <li><a href="posts.html">Community</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="upload.html" class="btn btn-outline">Add Notes</a>
+          <button id="theme-toggle" class="btn" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Empower Your ICT Level 5 Journey</h1>
+        <p>Collaborate, share resources, and grow with peers in a structured academic environment designed for ICT
+          students.</p>
+        <div class="hero-buttons">
+          <a href="about.html" class="btn btn-primary">Get Started</a>
+          <a href="lesson.html" class="btn btn-outline">Browse Lessons</a>
+          <a href="upload.html" class="btn btn-primary add-notes-special">Add Notes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+      <div class="container">
+        <h2>Platform Features</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>📘 Upload Notes</h3>
+            <p>Share your study materials and access a growing library of notes curated by Level 5 peers.</p>
+          </div>
+          <div class="card">
+            <h3>💻 Share Code</h3>
+            <p>Collaborate on coding projects, review each other's code, and solve programming challenges together.</p>
+          </div>
+          <div class="card">
+            <h3>💬 Community Discussion</h3>
+            <p>Engage in academic discussions, ask questions, and get help from fellow students and mentors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lessons Preview Section -->
+    <section class="section lessons-preview" id="lessons">
+      <div class="container">
+        <h2>Popular Lessons</h2>
+        <div class="grid lessons-grid">
+          <!-- Row 1 -->
+          <a class="card" href="lesson.html?topic=Programming">
+            <h3>🖥️ Programming</h3>
+            <p>Java / Python fundamentals, algorithms, flowcharts, debugging, and software development basics.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <a class="card" href="lesson.html?topic=Database%20Systems">
+            <h3>🗄️ Database Systems</h3>
+            <p>DBMS concepts, ER diagrams, normalization, SQL queries, and database design.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <a class="card" href="lesson.html?topic=Networking">
+            <h3>🌐 Networking (LAN)</h3>
+            <p>OSI model, network devices, IP addressing, subnetting, and LAN configuration.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <!-- Row 2 -->
+          <a class="card" href="lesson.html?topic=Web%20Development">
+            <h3>💻 Web Development</h3>
+            <p>HTML, CSS, JavaScript, responsive design, and website deployment.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <a class="card" href="lesson.html?topic=System%20Analysis">
+            <h3>📊 System Analysis &amp; Design</h3>
+            <p>Requirements engineering, UML diagrams, SDLC models, and system planning.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <a class="card" href="lesson.html?topic=Software%20Testing">
+            <h3>🧪 Software Testing</h3>
+            <p>Testing methods, debugging, quality assurance, and test case design.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <!-- Row 3 -->
+          <a class="card" href="lesson.html?topic=Graphic%20Design">
+            <h3>🎨 Graphic Design</h3>
+            <p>Design principles, color theory, image editing, vector graphics, and digital media production.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <a class="card" href="lesson.html?topic=Workplace%20Communication">
+            <h3>🗣️ Workplace Communication</h3>
+            <p>Reports, presentations, meetings, and professional communication skills.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+          <a class="card" href="lesson.html?topic=Information%20Management">
+            <h3>📁 Information Management</h3>
+            <p>Data handling, documentation systems, and workplace information management.</p>
+            <span class="lesson-btn">Open Lessons &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 VTA ICT L5 Community. All rights reserved.</p>
+      <p>VTA ICT Level 5 Community — Academic excellence through collaboration.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/ui.js"></script>
+
+  <!-- ===== Floating EJ.Ai Widget ===== -->
+  <div class="floating-ai-widget" id="floatingAiWidget">
+    <!-- Popup message -->
+    <div class="ai-popup-message" id="aiPopup">
+      <span class="ai-popup-close" id="aiPopupClose" aria-label="Close">✕</span>
+      <p class="ai-popup-line1">Hello 👋</p>
+      <p class="ai-popup-line2">Need help with ICT or coding?</p>
+      <a href="ai.html" class="ai-popup-cta">Chat with EJ.Ai →</a>
+    </div>
+    <!-- Main button -->
+    <button class="ai-button" id="aiButton" aria-label="Open EJ.Ai Chat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="30" height="30" aria-hidden="true">
+        <!-- Robot head -->
+        <rect x="14" y="18" width="36" height="26" rx="7" fill="white" />
+        <!-- Eyes -->
+        <circle cx="24" cy="30" r="4" fill="#9B1C31" />
+        <circle cx="40" cy="30" r="4" fill="#9B1C31" />
+        <!-- Mouth -->
+        <rect x="22" y="37" width="20" height="3" rx="1.5" fill="#9B1C31" />
+        <!-- Antenna -->
+        <rect x="30" y="10" width="4" height="8" rx="2" fill="white" />
+        <circle cx="32" cy="9" r="3" fill="white" />
+      </svg>
+    </button>
+  </div>
+
+  <style>
+    /* ===== Floating AI Widget ===== */
+    .floating-ai-widget {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 9990;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    /* -- Main button -- */
+    .ai-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #9B1C31 0%, #c0394e 50%, #7a1526 100%);
+      box-shadow:
+        0 4px 20px rgba(155, 28, 49, 0.55),
+        0 0 0 0 rgba(155, 28, 49, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: ai-bounce-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        ai-pulse 2.8s ease-in-out 1s infinite;
+      outline: none;
+      flex-shrink: 0;
+    }
+
+    .ai-button:hover {
+      transform: scale(1.1);
+      box-shadow:
+        0 6px 28px rgba(155, 28, 49, 0.7),
+        0 0 0 6px rgba(155, 28, 49, 0.15);
+      animation: none;
+    }
+
+    /* -- Popup message -- */
+    .ai-popup-message {
+      position: relative;
+      background: #1a1e24;
+      border: 1px solid rgba(155, 28, 49, 0.35);
+      border-radius: 14px;
+      padding: 14px 18px 14px 16px;
+      min-width: 210px;
+      max-width: 240px;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+      animation: ai-popup-appear 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      backdrop-filter: blur(6px);
+    }
+
+    .ai-popup-message::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 22px;
+      width: 14px;
+      height: 14px;
+      background: #1a1e24;
+      border-right: 1px solid rgba(155, 28, 49, 0.35);
+      border-bottom: 1px solid rgba(155, 28, 49, 0.35);
+      transform: rotate(45deg);
+    }
+
+    .ai-popup-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 11px;
+      color: #a0a8b4;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .ai-popup-close:hover {
+      color: #fff;
+      background: rgba(155, 28, 49, 0.3);
+    }
+
+    .ai-popup-line1 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #eef2f5;
+      margin-bottom: 2px;
+      padding-right: 18px;
+    }
+
+    .ai-popup-line2 {
+      font-size: 0.83rem;
+      color: #a0a8b4;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .ai-popup-cta {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, #9B1C31, #b22b40);
+      color: #fff;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 10px rgba(155, 28, 49, 0.4);
+    }
+
+    .ai-popup-cta:hover {
+      background: linear-gradient(135deg, #b22b40, #c0394e);
+      transform: translateY(-1px);
+    }
+
+    /* -- Popup fade-out -- */
+    .ai-popup-message.ai-popup-hide {
+      animation: ai-popup-fade-out 0.6s ease forwards;
+    }
+
+    /* ===== Keyframes ===== */
+    @keyframes ai-bounce-in {
+      0% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.6);
+      }
+
+      60% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.08);
+      }
+
+      80% {
+        transform: translateY(4px) scale(0.97);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes ai-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(155, 28, 49, 0.55), 0 0 0 0 rgba(155, 28, 49, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 4px 20px rgba(155, 28, 49, 0.55), 0 0 0 10px rgba(155, 28, 49, 0);
+      }
+    }
+
+    @keyframes ai-popup-appear {
+      0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes ai-popup-fade-out {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+        pointer-events: none;
+      }
+    }
+
+    /* -- Mobile -- */
+    @media (max-width: 480px) {
+      .floating-ai-widget {
+        bottom: 18px;
+        right: 16px;
+      }
+
+      .ai-popup-message {
+        min-width: 185px;
+        max-width: 210px;
+        padding: 12px 14px 12px 13px;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var popup = document.getElementById('aiPopup');
+      var btn = document.getElementById('aiButton');
+      var closeX = document.getElementById('aiPopupClose');
+
+      // Only show popup once per browser session
+      if (!sessionStorage.getItem('ejaiPopupShown')) {
+        sessionStorage.setItem('ejaiPopupShown', '1');
+
+        // Auto-hide after 9 s
+        setTimeout(function () {
+          hidePopup();
+        }, 9000);
+      } else {
+        // Already seen — hide immediately without delay
+        popup.style.display = 'none';
+      }
+
+      function hidePopup() {
+        if (!popup || popup.style.display === 'none') return;
+        popup.classList.add('ai-popup-hide');
+        setTimeout(function () { popup.style.display = 'none'; }, 650);
+      }
+
+      // Manual close
+      closeX.addEventListener('click', function (e) {
+        e.stopPropagation();
+        hidePopup();
+      });
+
+      // Button click → navigate to ai.html
+      btn.addEventListener('click', function () {
+        window.location.href = 'ai.html';
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
