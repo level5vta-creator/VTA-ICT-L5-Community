@@ -46,7 +46,7 @@ export async function handler(event) {
           "X-Title": "VTA ICT L5 Community AI"
         },
         body: JSON.stringify({
-          model: "google/gemma-3-12b",
+          model: "google/gemma-3-27b-it:free",
           max_tokens: 500,
           temperature: 0.7,
           messages: [
@@ -125,4 +125,5 @@ export async function handler(event) {
     };
   }
 }
+
 
