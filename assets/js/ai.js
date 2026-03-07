@@ -9,9 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Initial greeting ──────────────────────────────────────────────────
   addMessage(
-    'ai',
-    'Hi, I\'m EJ.Ai 👋\nYour AI study assistant 🤖\n\nAsk me anything about ICT 💻, programming 🧑‍💻, databases 🗄️, networking 🌐, or your study materials 📚.'
-  );
+  'ai',
+  'Hi! I\'m EJ.Ai 👋\n\nYour AI study assistant created by EJ.\n\nAsk me anything about:\n\n💻 Programming\n🗄 Databases\n🌐 Networking\n📚 ICT study materials\n\nType your question below to get started 🚀'
+ );
+
+  // Ensure welcome message is visible at top on mobile (reset any stale scroll)
+  chatMessages.scrollTop = 0;
 
   // ── Quick-action buttons ──────────────────────────────────────────────
   const prompts = {
@@ -67,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error('Chat error:', err);
       removeLoadingMessage(loadingId);
-      addMessage('error', '⚠ Sorry, I encountered an error. Please try again later.');
+      addMessage('error', '⚠ EJ.Ai is currently busy helping other students. Please try again in a few seconds.');
     }
 
     // 7. Scroll to bottom again
