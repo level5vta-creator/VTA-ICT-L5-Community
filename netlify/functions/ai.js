@@ -29,12 +29,39 @@ export async function handler(event) {
     };
   }
 
-  // Friendly fallback message for all AI failures
+  // Friendly fallback message shown only when ALL models fail
   const FALLBACK_REPLY =
     "EJ.Ai is currently busy helping other students. Please try again in a few seconds.";
 
-  // ── Call OpenRouter ───────────────────────────────────────────────────
-  try {
+  // ── Model priority list ───────────────────────────────────────────────
+  // Try primary first; on any failure wait 1 s then try fallback.
+  const MODELS = [
+    "openrouter/free",
+    "google/gemini-2.5-flash-lite"
+  ];
+
+  // ── Shared request payload builder ───────────────────────────────────
+  function buildPayload(model) {
+    return JSON.stringify({
+      model,
+      max_tokens: 500,
+      temperature: 0.7,
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are EJ.Ai, a helpful AI study assistant for ICT students."
+        },
+        {
+          role: "user",
+          content: message.trim()
+        }
+      ]
+    });
+  }
+
+  // ── Single model attempt ──────────────────────────────────────────────
+  async function tryModel(model) {
     let response;
     try {
       response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -45,78 +72,74 @@ export async function handler(event) {
           "HTTP-Referer": "https://vta-ict-l5-community.netlify.app",
           "X-Title": "VTA ICT L5 Community AI"
         },
-        body: JSON.stringify({
-          model: "openrouter/free",
-          max_tokens: 500,
-          temperature: 0.7,
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are EJ.Ai, a helpful AI study assistant for VTA ICT Level 5 students. You specialise in ICT, programming, databases, networking, and related study materials. Be concise, friendly, and educational."
-            },
-            {
-              role: "user",
-              content: message.trim()
-            }
-          ]
-        })
+        body: buildPayload(model)
       });
     } catch (fetchError) {
-      // Network / timeout failures
-      console.error("OpenRouter fetch error:", fetchError.message);
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reply: FALLBACK_REPLY })
-      };
+      // Network / DNS / timeout error
+      console.error(`[${model}] fetch error:`, fetchError.message);
+      return null;
     }
 
-    // ── Handle non-200 responses from OpenRouter ─────────────────────────
+    // Non-2xx from OpenRouter (rate limit, overload, etc.)
     if (!response.ok) {
       const errorText = await response.text().catch(() => "");
-      console.error("OpenRouter error:", response.status, errorText);
-
-      // Rate limit → friendly message
-      if (response.status === 429) {
-        return {
-          statusCode: 200,
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ reply: FALLBACK_REPLY })
-        };
-      }
-
-      // Any other upstream error → friendly message
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reply: FALLBACK_REPLY })
-      };
+      console.error(`[${model}] HTTP ${response.status}:`, errorText);
+      return null;
     }
 
-    // ── Parse AI response ────────────────────────────────────────────────
+    // Parse the response body
     let data;
     try {
       data = await response.json();
     } catch (parseError) {
-      console.error("JSON parse error:", parseError.message);
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reply: FALLBACK_REPLY })
-      };
+      console.error(`[${model}] JSON parse error:`, parseError.message);
+      return null;
     }
 
-    const reply =
-      data?.choices?.[0]?.message?.content?.trim() || FALLBACK_REPLY;
+    const reply = data?.choices?.[0]?.message?.content?.trim();
+    if (!reply) {
+      console.error(`[${model}] Empty reply from model`);
+      return null;
+    }
 
+    return reply;
+  }
+
+  // ── Fallback loop ─────────────────────────────────────────────────────
+  try {
+    for (let i = 0; i < MODELS.length; i++) {
+      const model = MODELS[i];
+
+      // Wait 1 second before every retry (not before the first attempt)
+      if (i > 0) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+
+      console.log(`Attempting model: ${model}`);
+      const reply = await tryModel(model);
+
+      if (reply !== null) {
+        // Success — return immediately
+        console.log(`Success with model: ${model}`);
+        return {
+          statusCode: 200,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ reply })
+        };
+      }
+
+      console.warn(`Model failed, moving to next: ${model}`);
+    }
+
+    // All models exhausted
+    console.error("All models failed. Returning fallback reply.");
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reply })
+      body: JSON.stringify({ reply: FALLBACK_REPLY })
     };
   } catch (error) {
-    // Catch-all for any unexpected error
+    // Catch-all for any unexpected handler error
     console.error("Handler error:", error.message);
     return {
       statusCode: 200,
@@ -125,7 +148,6 @@ export async function handler(event) {
     };
   }
 }
-
 
 
 
